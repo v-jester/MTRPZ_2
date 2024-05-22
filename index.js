@@ -6,3 +6,7 @@ const file = process.argv[2];
 const outIdx = process.argv.indexOf('--out');
 const formatIdx = process.argv.indexOf('--format');
 const format = formatIdx !== -1 ? process.argv[formatIdx + 1] : 'ansi';
+
+if (!file) {
+    throw new Error('No file path provided'); 
+}
