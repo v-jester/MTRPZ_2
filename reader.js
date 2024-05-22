@@ -133,3 +133,4 @@ const mdToAnsi = (mdText) => {
 
     return parts.join('');
 };
+export { setTags, setParas, setPre, mdToHtml, mdToAnsi, chkClosed, chkNested };
