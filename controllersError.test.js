@@ -8,3 +8,9 @@ describe('Error Controllers', () => {
             const text = 'This is **bold text';
             expect(() => chkClosed(text, /\*\*(?=\S)/g, /(?<=\S)\*\*/g, /\*\*(.+?)\*\*/g)).toThrow('There is no closing marker');
         });
+
+        it('should not throw an error if closing marker is found', () => {
+            const text = 'This is **bold** text';
+            expect(() => chkClosed(text, /\*\*(?=\S)/g, /(?<=\S)\*\*/g, /\*\*(.+?)\*\*/g)).not.toThrow();
+        });
+    });
