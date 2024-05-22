@@ -27,3 +27,10 @@ const setPre = (text) => {
     }
     return `<pre>${text.trim()}</pre>\n`;
 };
+
+const setTags = (text) => {
+    return text
+        .replace(bReg, '<b>$1</b>')
+        .replace(iReg, '<i>$1</i>')
+        .replace(mReg, '<tt>$1</tt>');
+};
