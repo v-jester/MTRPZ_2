@@ -14,3 +14,5 @@ describe('Error Controllers', () => {
             expect(() => chkClosed(text, /\*\*(?=\S)/g, /(?<=\S)\*\*/g, /\*\*(.+?)\*\*/g)).not.toThrow();
         });
     });
+
+    describe('chkNested', () => {
