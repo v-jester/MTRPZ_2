@@ -41,3 +41,20 @@ const setAnsiTags = (text) => {
         .replace(iReg, '\x1b[3m$1\x1b[0m')
         .replace(mReg, '\x1b[7m$1\x1b[0m');
 };
+
+
+const chkClosed = (text, lReg, rReg, reg) => {
+    const cleanedText = text.replace(/\\\*\*/g, '').replace(/\\_/g, '').replace(/\\`/g, '');
+
+    const matches = cleanedText.match(reg);
+    const lMatches = cleanedText.match(lReg);
+    const rMatches = cleanedText.match(rReg);
+
+    const totalMatches = matches ? matches.length * 2 : 0;
+    const lCount = lMatches ? lMatches.length : 0;
+    const rCount = rMatches ? rMatches.length : 0;
+
+    if (lCount + rCount !== totalMatches) {
+        throw new Error('There is no closing marker');
+    }
+};
