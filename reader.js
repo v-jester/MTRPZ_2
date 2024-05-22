@@ -11,3 +11,9 @@ const lmReg = /(?<=[ ,.:;\n\t]|^)`(?=\S)/g;
 const rmReg = /(?=\S)`(?=[ ,.:;\n\t]|$)/g;
 
 const markers = ['**', '_', '`'];
+
+const setParas = (text) => {
+    const paras = text.split('\n\n').filter((par) => par.trim() !== '');
+    const htmlParas = paras.map((par) => `<p>${par.trim()}</p>\n`);
+    return htmlParas.join('');
+};
