@@ -19,5 +19,3 @@ if (!file) {
         console.log(format === 'html' ? mdToHtml(mdText) : mdToAnsi(mdText)); 
     }
 })();
-
-//test revert
