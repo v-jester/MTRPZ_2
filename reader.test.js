@@ -11,3 +11,11 @@ describe('Markdown Parser', () => {
         expect(result).toContain('<i>italic</i>');
         expect(result).toContain('<tt>monospaced</tt>');
     });
+
+    test('should convert markdown to ANSI', () => {
+        const mdText = 'This is **bold**, _italic_, and `monospaced` text.';
+        const result = mdToAnsi(mdText);
+        expect(result).toContain('\x1b[1mbold\x1b[0m');
+        expect(result).toContain('\x1b[3mitalic\x1b[0m');
+        expect(result).toContain('\x1b[7mmonospaced\x1b[0m');
+    });
