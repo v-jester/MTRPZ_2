@@ -19,3 +19,18 @@ describe('Markdown Parser', () => {
         expect(result).toContain('\x1b[3mitalic\x1b[0m');
         expect(result).toContain('\x1b[7mmonospaced\x1b[0m');
     });
+
+    test('should convert markdown to ANSI using the script', async () => {
+        const mdText = 'This is **bold**, _italic_, and `monospaced` text.';
+        await fs.writeFile('test.md', mdText);
+        const result = await new Promise((resolve, reject) => {
+            exec('node index.js test.md --format=ansi', (error, stdout) => {
+                if (error) reject(error);
+                else resolve(stdout);
+            });
+        });
+        expect(result).toContain('\x1b[1mbold\x1b[0m');
+        expect(result).toContain('\x1b[3mitalic\x1b[0m');
+        expect(result).toContain('\x1b[7mmonospaced\x1b[0m');
+    });
+});
