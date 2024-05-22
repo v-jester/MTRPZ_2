@@ -34,3 +34,10 @@ const setTags = (text) => {
         .replace(iReg, '<i>$1</i>')
         .replace(mReg, '<tt>$1</tt>');
 };
+
+const setAnsiTags = (text) => {
+    return text
+        .replace(bReg, '\x1b[1m$1\x1b[0m')
+        .replace(iReg, '\x1b[3m$1\x1b[0m')
+        .replace(mReg, '\x1b[7m$1\x1b[0m');
+};
