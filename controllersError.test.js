@@ -16,3 +16,8 @@ describe('Error Controllers', () => {
     });
 
     describe('chkNested', () => {
+
+        it('should throw an error if nested markers are found', () => {
+            const text = 'This is **bold _italic_** text';
+            expect(() => chkNested(text, /\*\*(.+?)\*\*/g, '**')).toThrow('Nested markers are not allowed');
+        });
