@@ -10,3 +10,5 @@ const format = formatIdx !== -1 ? process.argv[formatIdx + 1] : 'ansi';
 if (!file) {
     throw new Error('No file path provided'); 
 }
+(async () => {
+    const mdText = await fs.readFile(file, 'utf-8'); 
