@@ -48,3 +48,5 @@ const chkNested = (text, reg, mark) => {
         }
     }
 };
+
+export { chkClosed, chkNested };
